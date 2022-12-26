@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   titulo = 'Registro de Usuario';
+  mensaje = '';
+  registrado=false;
+  nombre:string="";
+  apellido:string="";
+
+  registrarUsuario(){
+
+    this.registrado=true;
+    this.mensaje = "Usuario registrado con éxito";
+
+  }
 }
