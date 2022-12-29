@@ -1,25 +1,42 @@
 <h1 style="text-align:center">{{titulo}}</h1>
 
 <form>
-
+  <div class="form-group">
+  <label for> Nombre :</label>
+  <br>
   <input type="text" name="nombre" [(ngModel)]="nombre"><br>
+  </div>
 
+  <div class="form-group">
+  <label for>Apellido : </label>
+  <br>
   <input type="text" name="apellido" [(ngModel)]="apellido"><br>
+  </div>
 
-  <input type="submit" value="Registrar" (click)="registrarUsuario()" >
+  <div class="form-group">
+  <label for> Cargo : </label>
+  <br>
+  <input type="text" name="cargo" [(ngModel)]="cargo"><br>
+  </div>
+
+  <br>
+  <input type="submit" value="Registrar" (click)="registrarUsuario()">
 
 </form>
 
 <br>
 
-<p *ngIf="registrado; else sinRegistrar">{{mensaje}} con el nombre de: {{nombre}} {{apellido}}</p>
+<p *ngIf="registrado; else sinRegistrar">{{mensaje}} con el nombre de: <span ngClass="NombreApellido">{{nombre}}
+    {{apellido}}</span>
+  y con el cargo de <span [ngStyle]="{color: cargo=='director' || cargo=='CEO'? 'blue' : 'green'}">{{cargo}}</span>.</p>
 
 <ng-template #sinRegistrar>
-<p>Nadie registrado</p>
+  <p>Nadie registrado</p>
 </ng-template>
 <br>
 <br>
 
 <ul>
-  <li *ngFor="let entrada of entradas;let i = index;"><span style="font-size:larger;font-weight:bold;">{{entrada.titulo}}</span>. Entrada {{i+1}}</li>
+  <li *ngFor="let entrada of entradas;let i = index;"><span
+      style="font-size:larger;font-weight:bold;">{{entrada.titulo}}</span>. Entrada {{i+1}}</li>
 </ul>
